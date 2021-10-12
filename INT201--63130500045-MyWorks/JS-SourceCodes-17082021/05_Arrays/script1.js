@@ -6,8 +6,7 @@ console.log(`typeof arr1: ${typeof arr1}`);
 //array of objects
 let students = [
   {
-    id: 1,
-    name: 'Ann'
+    id: 1, name: 'Ann'
   },
   { id: 2, name: 'Peter' },
   { id: 3, name: 'Mary' }

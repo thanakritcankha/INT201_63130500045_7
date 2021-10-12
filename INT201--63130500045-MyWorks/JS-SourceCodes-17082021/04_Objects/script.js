@@ -1,71 +1,37 @@
-// let person = {} //let person = new  Object(); // implicit class
-// console.log(typeof person);
-// person.id = 12345678;
-// person.name = "Somchai";
-// console.log(person);
-// person.email = "somchai@gmail.com";
-// console.log(person);
-// delete person.email;
-// console.log(person);
-class Person {
-    constructor(id, name) {
-        if (id.length != 13) this._id = 'unknown';
-        else this._id = id;
-        this._name = name;
-    }
+let player1 = { id: 1, name: 'Adam' }; //let player1=new Object()
+console.log(Object.prototype.isPrototypeOf(player1));
 
-    //getter
-    get id() {
-        return this._id;
-    }
+let adminPlayer = Object.create(player1);
+adminPlayer.level = 'super';
 
-    //setter
-    set id(id) {
-        this._id = id; //backing field
-    }
+console.log(`${adminPlayer.id}, ${adminPlayer.name}, ${adminPlayer.level}`);
 
-    set name(name) {
-        this._name = name;
-    }
-
-    get name() {
-        return this._name;
-    }
-
-    // //method
-    toString() {
-        return `person id = ${this._id}, person name= ${this._name}`;
-    }
-
+let playerKeys = Object.keys(player1);
+for (let p of playerKeys) {
+  console.log(`key: ` + p);
 }
+class Dice {
+  constructor(gameTitle) {
+    console.log('constructor is working');
+    this._diceName = gameTitle;
+    this._faceValue = 0;
+  }
+  roll() {
+    this._faceValue = Math.floor(Math.random() * 6) + 1;
+  }
+  get faceValue() {
+    return this._faceValue;
+  }
+}
+//#1
+let dice1 = new Dice();
+let dice2 = new Dice();
 
-let per1 = new Person('1234567', 'SomSri');
-console.log(per1.toString());
-
-let per2 = new Person('1234567891234', 'Somsak');
-console.log(per2.toString());
-
-per2.getFirstNameLetter = function () {
-    return this._name.charAt(0);
+Dice.prototype.toString = function () {
+  return `game = ${this._diceName}, faceValue = ${this._faceValue}`;
 };
 
-console.log(per2.getFirstNameLetter());
-console.log(per1.getFirstNameLetter());
-//per1.getFirstNameLetter is not a function
-// Person.prototype.getFirstNameLetter = function () {
-//   return this._name.charAt(0);
-// };
-// console.log(per2.getFirstNameLetter());
-// console.log(per1.getFirstNameLetter());
+console.log(dice1.toString());
+console.log(dice2.toString());
 
-class Student {
-    constructor(stdId) {
-        studentId = stdId;
-    }
-
-}
-
-console.log(Object.prototype.isPrototypeOf(per1));
-console.log(Person.prototype.isPrototypeOf(per1));
-console.log(Student.prototype.isPrototypeOf(per1));
-
+console.log(Dice.prototype.isPrototypeOf(player1));

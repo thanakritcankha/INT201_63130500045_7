@@ -1,9 +1,8 @@
 //JavaScript Functions are first-class citizens
 
 //1. store functions in variables
-function add(n1, n2) {
-  return n1 + n2;
-}
+let add = (n1, n2) => n1 + n2;
+
 let sum = add;
 
 let addResult1 = add(10, 20);
